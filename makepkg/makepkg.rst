@@ -87,7 +87,11 @@ wiki -> Getting_involved ->  Arch User Repository
   cd ccal
   vim PKGBUILD
   vim *.install
-  # updpkgsums # 若有增減 source code
+
+  # 若有增減 source code, 或修改版號，需要更新檢查碼
+  # makepkg -o # 先 download source 就好
+  # updpkgsums
+
   makepkg -si
 
 分享到 aur
@@ -127,13 +131,14 @@ VCS packages
 * makedepends 要加上版本控管軟體
 * sources 使用 source=('FOLDER::VCS+URL#FRAGMENT') 格式
 * pkgver() 函數
+* md5sum=(SKIP ...) 或 sha1sums=(SKIP ...)
 
 除錯
 ====
 
-makepkg -L # 產生 log 檔
-makepkg --check # 跑 check()
-makepkg -R # 只重新打包
+* makepkg -L # 產生 log 檔
+* makepkg --check # 跑 check()
+* makepkg -R # 只重新打包
 
 patch
 -----
@@ -168,8 +173,39 @@ PKGBUILD 觀念
 重要 makepkg.conf
 -----------------
 
-* MAKEFLAGS
-* distcc
+效能相關調整:
+
+  * MAKEFLAGS: 主要設定 -j <cpu數+1>
+  * distcc: 參考 wiki
+  * ccache: 參考 wiki
+
+TODO
+====
+
+加入 trust user 行列協助打包
+
+1. 設定認証金鑰:
+
+  * sudo pacman -S gnupg
+  * 參考 [github 步驟](https://help.github.com/articles/generating-a-new-gpg-key/):
+
+2. 設定e-mail 可寄送簽章信件(以 thunderbird-enigmail 為例)::
+
+    yay -S thunderbird-enigmail
+    thunderbird &
+    # 選單 -> Enigmail -> Setup Wizard, 選取你新增的 key
+
+3. 在 aur.archlinux.org 個人設定放入公開金鑰::
+
+     $ gpg --fingerprint
+     pub   rsa4096 2018-08-11 [SC]
+           1234 5678 9012 76E2 D011  0666 087B 4690 4161 B0A5  #將這行複製
+           uid           [ultimate] <your id and email>
+     sub   rsa4096 2018-08-11 [E]
+
+4. 以 thunderbird 寫信加上簽章, 寫信到 aur-general@archlinux.org, 格式內容
+   可以使用關鍵字 archlinux maillist "tu application" 在 google 先搜尋一下,
+   看看別人怎麼寫，主要還是參考 [wiki 大綱 How to become a TU](https://wiki.archlinux.org/index.php/Trusted_Users)
 
 .. vim:et sta
 .. ex:set sw=2 ts=2:
