@@ -40,7 +40,7 @@ readline 本身就相當於其他 Linux 的 readline + readline-dev + readline-d
 =================
 
 先到官方網站搜尋 https://aur.archlinux.org, 以安裝 yay 為例,
-它是一個[AUR Helper](https://wiki.archlinux.org/index.php/AUR_helpers)
+它是一個 AUR Helper: https://wiki.archlinux.org/index.php/AUR_helpers
 
 初次設定::
 
@@ -179,23 +179,21 @@ PKGBUILD 觀念
   * distcc: 參考 wiki
   * ccache: 參考 wiki
 
-TODO
-====
-
 加入 trust user 行列協助打包
+----------------------------
 
-1. 設定認証金鑰:
+* 設定認証金鑰:
 
   * sudo pacman -S gnupg
-  * 參考 [github 步驟](https://help.github.com/articles/generating-a-new-gpg-key/):
+  * 參考 github 步驟: https://help.github.com/articles/generating-a-new-gpg-key/:
 
-2. 設定e-mail 可寄送簽章信件(以 thunderbird-enigmail 為例)::
+* 設定e-mail 可寄送簽章信件(以 thunderbird-enigmail 為例)::
 
     yay -S thunderbird-enigmail
     thunderbird &
     # 選單 -> Enigmail -> Setup Wizard, 選取你新增的 key
 
-3. 在 aur.archlinux.org 個人設定放入公開金鑰::
+* 在 aur.archlinux.org 個人設定放入公開金鑰::
 
      $ gpg --fingerprint
      pub   rsa4096 2018-08-11 [SC]
@@ -203,9 +201,9 @@ TODO
            uid           [ultimate] <your id and email>
      sub   rsa4096 2018-08-11 [E]
 
-4. 以 thunderbird 寫信加上簽章, 寫信到 aur-general@archlinux.org, 格式內容
-   可以使用關鍵字 archlinux maillist "tu application" 在 google 先搜尋一下,
-   看看別人怎麼寫，主要還是參考 [wiki 大綱 How to become a TU](https://wiki.archlinux.org/index.php/Trusted_Users)
+* 以 thunderbird 寫信加上簽章, 寫信到 aur-general@archlinux.org, 格式內容
+  可以使用關鍵字 archlinux maillist "tu application" 在 google 先搜尋一下,
+  看看別人怎麼寫，主要還是參考 wiki 大綱 How to become a TU: https://wiki.archlinux.org/index.php/Trusted_Users
 
 .. vim:et sta
 .. ex:set sw=2 ts=2:
