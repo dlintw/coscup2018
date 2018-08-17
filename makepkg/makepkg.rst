@@ -185,7 +185,15 @@ PKGBUILD 觀念
 * 設定認証金鑰:
 
   * sudo pacman -S gnupg
-  * 參考 github 步驟: https://help.github.com/articles/generating-a-new-gpg-key/:
+  * 參考 github 步驟: https://help.github.com/articles/generating-a-new-gpg-key ::
+
+      gpg --full-generate-key
+      # choose RSA and RSA, 4096
+
+      gpg --list-secret-keys --keyid-format LONG
+      # show GPG key ID, eg.  sec 4096R/3AA5C34371567BD2, it is 3AA%....7BD2
+
+      gpg --armor --export <GPG key ID>
 
 * 設定e-mail 可寄送簽章信件(以 thunderbird-enigmail 為例)::
 
