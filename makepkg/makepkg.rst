@@ -200,6 +200,7 @@ PKGBUILD 觀念
     yay -S thunderbird-enigmail
     thunderbird &
     # 選單 -> Enigmail -> Setup Wizard, 選取你新增的 key
+    # 若看不到選單，先移除 thunderbird-enigmail 再重裝
 
 * 在 aur.archlinux.org 個人設定放入公開金鑰::
 
@@ -212,6 +213,9 @@ PKGBUILD 觀念
 * 以 thunderbird 寫信加上簽章, 寫信到 aur-general@archlinux.org, 格式內容
   可以使用關鍵字 archlinux maillist "tu application" 在 google 先搜尋一下,
   看看別人怎麼寫，主要還是參考 wiki 大綱 How to become a TU: https://wiki.archlinux.org/index.php/Trusted_Users
+
+* 發信後等待審核，詳細審核程序, 以及 TU 目前最少每兩個月要做事，詳細規定在
+  https://git.archlinux.org/tu-bylaws.git/tree/tu-bylaws.txt
 
 .. vim:et sta
 .. ex:set sw=2 ts=2:
