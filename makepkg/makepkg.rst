@@ -195,6 +195,9 @@ PKGBUILD 觀念
 
       gpg --armor --export <GPG key ID>
 
+* 上傳金鑰到 key server pgp.mit.edu, 等幾天全球 key server 會有
+* 備份好 key, ~/.gnupg 到隨身碟
+
 * 設定e-mail 可寄送簽章信件(以 thunderbird-enigmail 為例)::
 
     yay -S thunderbird-enigmail
