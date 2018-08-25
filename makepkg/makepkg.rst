@@ -182,20 +182,35 @@ PKGBUILD 觀念
 加入 trust user 行列協助打包
 ----------------------------
 
+* https://newtoypia.blogspot.com/2013/12/gnupg-pgp.html
+
 * 設定認証金鑰:
 
   * sudo pacman -S gnupg
   * 參考 github 步驟: https://help.github.com/articles/generating-a-new-gpg-key ::
 
       gpg --full-generate-key
-      # choose RSA and RSA, 4096
+      # choose RSA and RSA, 4096, expire years, Name on passport
 
       gpg --list-secret-keys --keyid-format LONG
       # show GPG key ID, eg.  sec 4096R/3AA5C34371567BD2, it is 3AA%....7BD2
 
       gpg --armor --export <GPG key ID>
 
-* 上傳金鑰到 key server pgp.mit.edu, 等幾天全球 key server 會有
+      # if want to edit expire day or add id
+      gpg --edit-key <GPG key ID>
+      gpg> list
+      gpg> expire # change expire day
+      gpg> adduid # add id
+      gpg> save
+
+* 上傳金鑰到 key server (建議: https://sks-keyservers.net/status/ 上 pool 內
+  的主機, 以往知名 key servers 包括ubuntu,mit 都不在穩定的 pool 內), 等幾天
+  全球 key server 會查的到::
+
+    gpg --keyserver pool.sks-keyservers.net --send-key <user-id>
+    gpg --keyserver pgp.mit.edu --send-key <user-id> # 舊教學網站方式
+
 * 備份好 key, ~/.gnupg 到隨身碟
 
 * 設定e-mail 可寄送簽章信件(以 thunderbird-enigmail 為例)::
